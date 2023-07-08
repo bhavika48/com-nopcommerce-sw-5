@@ -1,6 +1,7 @@
 # Any target folder
-/target
-/target/**
+target
+target/**
 
-/.idea
+.idea
+.idea/**
 
