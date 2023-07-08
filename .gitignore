@@ -1,0 +1,6 @@
+# Any target folder
+/target
+/target/**
+
+/.idea
+
