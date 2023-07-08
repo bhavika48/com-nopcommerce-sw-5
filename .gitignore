@@ -5,3 +5,5 @@ target/**
 .idea
 .idea/**
 
+test-output
+test-output/**
