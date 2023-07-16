@@ -22,27 +22,23 @@ public class HtcOneMiniPage extends Utility {
     @FindBy(xpath = "//span[@title='Close']")
     WebElement closeButton;
 
-
-
-
-    public String getHtcTitle(){
+    public String getHtcTitle() {
         Reporter.log("Get htc title  " + htcOneMiniTitle.toString());
         String message = getTextFromElement(htcOneMiniTitle);
         CustomListeners.test.log(Status.PASS, "success message ");
         return message;
     }
 
-    public void clickOnAddToCart(){
-        Reporter.log("click on add to cart" +addToCartHtc.toString());
+    public void clickOnAddToCart() {
+        Reporter.log("click on add to cart" + addToCartHtc.toString());
         clickOnElement(addToCartHtc);
         CustomListeners.test.log(Status.PASS, "Click on add to cart");
     }
 
-    public void clickOnCloseButton(){
-        Reporter.log("click on close button" +closeButton.toString());
+    public void clickOnCloseButton() {
+        Reporter.log("click on close button" + closeButton.toString());
         clickOnElement(closeButton);
         CustomListeners.test.log(Status.PASS, "Click on close button");
     }
-
-
+    
 }
