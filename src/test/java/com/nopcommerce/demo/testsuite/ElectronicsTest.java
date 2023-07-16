@@ -3,43 +3,62 @@ package com.nopcommerce.demo.testsuite;
 
 import com.nopcommerce.demo.customlisteners.CustomListeners;
 import com.nopcommerce.demo.pages.*;
-
 import com.nopcommerce.demo.testbase.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
 @Listeners(CustomListeners.class)
 public class ElectronicsTest extends BaseTest {
-    CellPhonesPage cellPhonesPage ;
-    TopMenuPage topMenuPage ;
-    NokiaLumiaPage nokiaLumiaPage ;
-    ShoppingCartPage shoppingCartPage ;
-    LoginPage loginPage ;
+    CellPhonesPage cellPhonesPage;
+    TopMenuPage topMenuPage;
+    NokiaLumiaPage nokiaLumiaPage;
+    ShoppingCartPage shoppingCartPage;
+    LoginPage loginPage;
     RegisterPage registerPage;
-    CheckoutPage checkoutPage ;
+    CheckoutPage checkoutPage;
+    HtcOneMiniPage htcOneMiniPage;
 
     @BeforeMethod
-    public void inIt(){
-        cellPhonesPage=new CellPhonesPage();
-        topMenuPage=new TopMenuPage();
-        nokiaLumiaPage=new NokiaLumiaPage();
-        shoppingCartPage=new ShoppingCartPage();
-        loginPage =new LoginPage();
-        registerPage=new RegisterPage();
-        checkoutPage=new CheckoutPage();
+    public void inIt() {
+        cellPhonesPage = new CellPhonesPage();
+        topMenuPage = new TopMenuPage();
+        nokiaLumiaPage = new NokiaLumiaPage();
+        shoppingCartPage = new ShoppingCartPage();
+        loginPage = new LoginPage();
+        registerPage = new RegisterPage();
+        checkoutPage = new CheckoutPage();
+        htcOneMiniPage = new HtcOneMiniPage();
+    }
+
+    @Test
+    public void verifyThatTheProductAddedSuccessfully() {
+        topMenuPage.mouseHoverOnElectronicsMenu();
+        topMenuPage.mouseHoverAndClickOnCellPhonesMenu();
+        String expectedMessage = "Cell phones";
+        String actualMessage = cellPhonesPage.getTitle();
+        Assert.assertEquals(actualMessage, expectedMessage);
+        cellPhonesPage.selectProductNameByHTCOneMini();
+        String expectMessage1 = "HTC One Mini Blue";
+        String actualMessage1 = htcOneMiniPage.getHtcTitle();
+        Assert.assertEquals(expectMessage1, actualMessage1);
+        htcOneMiniPage.clickOnAddToCart();
+        htcOneMiniPage.clickOnCloseButton();
 
     }
 
-    @Test(groups = {"Smoke","Regression"})
+
+    @Test(groups = {"Smoke", "Regression"})
     public void verifyThatTheProductAddedSuccessfullyAndPlaceOrderSuccessfully() {
 //      2.1 Mouse Hover on “Electronics”Tab
         topMenuPage.mouseHoverOnElectronicsMenu();
 
+
 //      2.2 Mouse Hover on “Cell phones” and click
         topMenuPage.mouseHoverAndClickOnCellPhonesMenu();
 //      2.3 Verify the text “Cell phones”
-        String expectedMessage = "Welcome to our store";
+        String expectedMessage = "Cell phones";
         String actualMessage = cellPhonesPage.getTitle();
         Assert.assertEquals(actualMessage, expectedMessage);
 
